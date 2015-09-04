@@ -1,3 +1,3 @@
 .npmignore
-parser.pegjs
 .travis.yml
+parser.pegjs
