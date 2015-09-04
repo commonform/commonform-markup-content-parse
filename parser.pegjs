@@ -27,11 +27,8 @@ Blank
 
 Word
   = characters:(
-      ( ! ( "\"\"" /
-            "<" / ">" /
-            "{" / "}" /
-            "[" / "]" )
-        TextChar ) + )
+        ( ! ( Definition / Use / Reference / Blank )
+            TextChar ) + )
     { return characters
         .map(function(x) { return x[1] })
         .join('') }

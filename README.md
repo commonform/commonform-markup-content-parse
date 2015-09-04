@@ -67,9 +67,23 @@ assert.deepEqual(
 Terms, headings, and fill-in-the-blank labels cannot start or end with spaces:
 
 ```javascript
-assert.throws( function() { parse('""Consideration ""') })
+assert.deepEqual(
+  parse('""Consideration ""'),
+  [ '""Consideration ""' ])
 
-assert.throws( function() { parse('[ Company Name]') })
+assert.deepEqual(
+  parse('[ Company Name]'),
+  [ '[ Company Name]' ])
 
-assert.throws( function() { parse('< Company Name >') })
+assert.deepEqual(
+  parse('< Company Name >'),
+  [ '< Company Name >' ])
+```
+
+Characters used to write markup can be used in free text:
+
+```javascript
+assert.deepEqual(
+  parse('This text has a < control character in it.'),
+  [ 'This text has a < control character in it.' ])
 ```
