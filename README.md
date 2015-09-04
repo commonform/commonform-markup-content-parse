@@ -13,9 +13,8 @@ var assert = require('assert')
 
 assert.deepEqual(
   parse('Define terms like ""Consideration""'),
-  { content: [
-      'Define terms like ',
-      { definition: 'Consideration' } ] })
+  [ 'Define terms like ',
+    { definition: 'Consideration' } ])
 ```
 
 # Uses
@@ -25,9 +24,8 @@ To use a term, type it between angle brackets:
 ```javascript
 assert.deepEqual(
   parse('Use defined terms like <Consideration>'),
-  { content: [
-      'Use defined terms like ',
-      { use: 'Consideration' } ] })
+  [ 'Use defined terms like ',
+    { use: 'Consideration' } ])
 ```
 
 # References
@@ -37,9 +35,8 @@ Reference a form by typing its heading within curly brackets:
 ```javascript
 assert.deepEqual(
   parse('Reference headings like {Services}'),
-  { content: [
-      'Reference headings like ',
-      { reference: 'Services' } ] })
+  [ 'Reference headings like ',
+    { reference: 'Services' } ])
 ```
 
 # Blanks
@@ -49,9 +46,8 @@ Write a label for a fill-in-the-blank in square brackets:
 ```javascript
 assert.deepEqual(
   parse('Leave blanks like [Company Name]'),
-  { content: [
-      'Leave blanks like ',
-      { blank: 'Company Name' } ] })
+  [ 'Leave blanks like ',
+    { blank: 'Company Name' } ])
 ```
 
 # All Together
@@ -64,9 +60,8 @@ assert.deepEqual(
       'while referencing {Orange} ',
       'with a blank for [Berry]' ]
       .join('')),
-  { content: [
-      'Define a term ', { definition: 'Apple' },
-      ' then use it ', { use: 'Apple' },
-      ' while referencing ', { reference: 'Orange' },
-      ' with a blank for ', { blank: 'Berry' } ] })
+  [ 'Define a term ', { definition: 'Apple' },
+    ' then use it ', { use: 'Apple' },
+    ' while referencing ', { reference: 'Orange' },
+    ' with a blank for ', { blank: 'Berry' } ])
 ```

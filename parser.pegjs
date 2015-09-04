@@ -1,4 +1,4 @@
-start = elements:( Element + ) { return { content: elements } }
+start = elements:( Element + ) { return elements }
 
 Element
   = Definition / Use / Reference / Blank / Text
