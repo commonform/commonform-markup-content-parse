@@ -1,0 +1,18 @@
+{
+  "name": "commonform-markup-content-parse",
+  "version": "0.0.0",
+  "description": "parse common form markup content",
+  "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
+  "repository": "commonform/commonform-markup-parse",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "defence-cli": "~1.0.1",
+    "pegjs": "~0.9.0",
+    "replace-require-self": "~1.0.0"
+  },
+  "scripts": {
+    "prepublish": "pegjs parser.pegjs",
+    "pretest": "npm run prepublish",
+    "test": "defence README.md | replace-require-self | node"
+  }
+}
