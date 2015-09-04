@@ -1,11 +1,13 @@
-start = elements:( Element + ) { return elements }
+START
+  = elements:( Element + )
+    { return elements }
 
 Element
   = Definition / Use / Reference / Blank / Text
 
 Text
-  = chars:( ( Space / Word ) + )
-    { return chars.join('') }
+  = characters:( ( Space / Word ) + )
+    { return characters.join('') }
 
 Definition
   = "\"\"" term:Indentifier "\"\""
@@ -24,32 +26,33 @@ Blank
     { return { blank: label } }
 
 Word
-  = chars:(
+  = characters:(
       ( ! ( "\"\"" /
             "<" / ">" /
             "{" / "}" /
             "[" / "]" )
-        Char ) + )
-    { return chars
+        TextChar ) + )
+    { return characters
         .map(function(x) { return x[1] })
         .join('') }
 
 Indentifier
-  = a:SafeChar chars:( ( SafeChar / SafeSpace ) * )
-    { return a + chars.join('') }
+  = firstCharacter:IndentifierChar
+    characters:( ( IndentifierChar / IndentifierSpace ) * )
+    { return firstCharacter + characters.join('') }
 
-SafeSpace
-  = a:Space b:SafeChar
-    { return a + b }
+IndentifierSpace
+  = space:Space character:IndentifierChar
+    { return space + character }
 
-SafeChar
-  = char:[0-9A-Za-z\-\']
-    { return char }
+IndentifierChar
+  = characters:[0-9A-Za-z\-\']
+    { return characters }
 
-Char
-  = char:[\x20-\x7E]
-    { return char }
+TextChar
+  = characters:[\x20-\x7E]
+    { return characters }
 
 Space
-  = chars:( " " + )
-    { return chars.join('') }
+  = characters:( " " + )
+    { return characters.join('') }
