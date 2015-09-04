@@ -6,7 +6,7 @@ The exported function takes a string argument containing a single line of text w
 
 # Definitions
 
-Write the word being defined between double-double quotes:
+Write the term being defined between double-double quotes:
 
 ```javascript
 var assert = require('assert')
