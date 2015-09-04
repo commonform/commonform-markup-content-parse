@@ -6,7 +6,7 @@ The exported function takes a string argument containing a single line of text w
 
 # Definitions
 
-Write the term being defined between double-double quotes:
+Type the term being defined between double-double quotes:
 
 ```javascript
 var assert = require('assert')
@@ -16,21 +16,9 @@ assert.deepEqual(
   [ 'Define terms like ', { definition: 'Consideration' } ])
 ```
 
-Terms cannot start or end with spaces:
-
-```javascript
-assert.throws(
-  function() {
-    parse('Define terms like ""Consideration ""') })
-
-assert.throws(
-  function() {
-    parse('Define terms like "" Consideration""') })
-```
-
 # Uses
 
-To use a term, type it between angle brackets:
+To use a defined term, type it between angle brackets:
 
 ```javascript
 assert.deepEqual(
@@ -40,7 +28,7 @@ assert.deepEqual(
 
 # References
 
-Reference a form by typing its heading within curly brackets:
+Type the target form's heading between curly brackets:
 
 ```javascript
 assert.deepEqual(
@@ -72,4 +60,16 @@ assert.deepEqual(
     ' then use it ', { use: 'Apple' },
     ' while referencing ', { reference: 'Orange' },
     ' with a blank for ', { blank: 'Berry' } ])
+```
+
+# Finer Details
+
+Terms, headings, and fill-in-the-blank labels cannot start or end with spaces:
+
+```javascript
+assert.throws( function() { parse('""Consideration ""') })
+
+assert.throws( function() { parse('[ Company Name]') })
+
+assert.throws( function() { parse('< Company Name >') })
 ```
