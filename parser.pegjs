@@ -35,8 +35,12 @@ Word
         .join('') }
 
 Indentifier
-  = chars:( ( [0-9A-Za-z\-\'] / Space ) + )
+  = chars:( ( SafeChar / Space ) + )
     { return chars.join('') }
+
+SafeChar
+  = char:[0-9A-Za-z\-\']
+    { return char }
 
 Char
   = char:[\x20-\x7E]
