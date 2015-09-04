@@ -11,7 +11,7 @@
     "replace-require-self": "~1.0.0"
   },
   "scripts": {
-    "prepublish": "pegjs parser.pegjs",
+    "prepublish": "pegjs --optimize size parser.pegjs",
     "pretest": "npm run prepublish",
     "test": "defence README.md | replace-require-self | node"
   }
