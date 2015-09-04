@@ -16,6 +16,18 @@ assert.deepEqual(
   [ 'Define terms like ', { definition: 'Consideration' } ])
 ```
 
+Terms cannot start or end with spaces:
+
+```javascript
+assert.throws(
+  function() {
+    parse('Define terms like ""Consideration ""') })
+
+assert.throws(
+  function() {
+    parse('Define terms like "" Consideration""') })
+```
+
 # Uses
 
 To use a term, type it between angle brackets:

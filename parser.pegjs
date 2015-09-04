@@ -35,8 +35,12 @@ Word
         .join('') }
 
 Indentifier
-  = a:SafeChar chars:( ( SafeChar / Space ) + )
+  = a:SafeChar chars:( ( SafeChar / SafeSpace ) * )
     { return a + chars.join('') }
+
+SafeSpace
+  = a:Space b:SafeChar
+    { return a + b }
 
 SafeChar
   = char:[0-9A-Za-z\-\']
